@@ -15,16 +15,32 @@ string[] CreateArray(string pols) //Функция создания массив
 
 void PrintArray(string[] ArrayPols) //Функция печати массива
     {
-        for (int i = 0; i < ArrayPols.Length; i++)
+        Console.WriteLine();
+        foreach (string word in ArrayPols)
         {
-            System.Console.Write(ArrayPols[i] + " ");
+            Console.Write(word + " ");
         }
-            System.Console.WriteLine();
+        Console.WriteLine();
     }
  
+string[] ArrayLess3(string[] ArrayPols)
+    {
+        string[] newArray = new string[ArrayPols.Length]; // Создаем новый массив такой же длины, как оригинальный
+        int j = 0;                                        // Индекс для нового массива
+        foreach (string word in ArrayPols)
+        {
+            if (word.Length <= 3)
+            {
+                newArray[j] = word;
+                j++;
+            }
+        }
+        return newArray;
+    }
+
 System.Console.WriteLine("Введите строку, разделяя слова пробелами:");
-string pols = Console.ReadLine();
-
-PrintArray(CreateArray(pols)); // Печать оригинального массива
-
-
+string pols = Console.ReadLine(); // Пользователь задаёт строку из слов
+string[] ArrayPols = CreateArray(pols);
+PrintArray(ArrayPols); // Печать оригинального массива
+string[] NewArray = ArrayLess3(ArrayPols);
+PrintArray(NewArray); // Печать нового массива
